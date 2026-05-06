@@ -1,0 +1,36 @@
+/* =============================================
+   ADELUX PADEL CLUB - Global Reset & Variables
+   ============================================= */
+
+:root {
+  --accent: #d6ff1f;
+  --dark: #0a0a0a;
+  --text: #1a1a1a;
+  --muted: #6d6d72;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "Manrope", sans-serif;
+  background: #f7f7f4;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
