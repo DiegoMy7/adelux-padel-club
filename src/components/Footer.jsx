@@ -1,12 +1,38 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import AdeluxLogo from './AdeluxLogo';
 
 const ARROW = '\u2197';
 
 export default function Footer() {
-  const handleSubmit = useCallback((e) => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState(''); // 'loading', 'success', 'error'
+  
+  // URL de tu API Gateway
+  const API_URL = "https://8ngon1q9i3.execute-api.us-east-1.amazonaws.com/prod/subscribe";
+
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-  }, []);
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
+  }, [email]);
 
   return (
     <footer className="site-footer-full">
@@ -71,12 +97,22 @@ export default function Footer() {
             <h3>Subscribe Newsletter</h3>
             <p>Get the latest updates on tournaments, promotions &amp; padel tips.</p>
             <form className="newsletter-form" onSubmit={handleSubmit}>
-              <input type="email" placeholder="Subscribe to Our Newsletter" aria-label="Email" />
-              <button className="cta-pill footer-submit" type="submit">
-                <span>Subscribe Now</span>
-                <span className="join-icon small">{ARROW}</span>
+              <input 
+                type="email" 
+                placeholder="Subscribe to Our Newsletter" 
+                aria-label="Email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={status === 'loading'}
+              />
+              <button className="cta-pill footer-submit" type="submit" disabled={status === 'loading'}>
+                <span>{status === 'loading' ? 'Enviando...' : 'Subscribe Now'}</span>
+                {status !== 'loading' && <span className="join-icon small">{ARROW}</span>}
               </button>
             </form>
+            {status === 'success' && <p style={{ color: '#4ade80', marginTop: '10px', fontSize: '14px' }}>¡Suscripción exitosa!</p>}
+            {status === 'error' && <p style={{ color: '#f87171', marginTop: '10px', fontSize: '14px' }}>Hubo un error. Intenta de nuevo.</p>}
           </section>
         </div>
 
