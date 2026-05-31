@@ -1,13 +1,11 @@
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
 import { useCountUp } from '../hooks/useCountUp';
 
-const ARROW = '\u2197';
-
 export default function About() {
   const sectionRef = useRevealOnScroll();
-  const counter1 = useCountUp(2022, '');
-  const counter2 = useCountUp(100, '+');
-  const counter3 = useCountUp(25, '+');
+  const { ref: counter1Ref, displayValue: counter1Value } = useCountUp(2022, '');
+  const { ref: counter2Ref, displayValue: counter2Value } = useCountUp(100, '+');
+  const { ref: counter3Ref, displayValue: counter3Value } = useCountUp(25, '+');
 
   return (
     <section className="about-section light-section" id="about" ref={sectionRef}>
@@ -30,15 +28,15 @@ export default function About() {
 
           <div className="stats-row reveal" data-reveal="left" data-delay="220">
             <article>
-              <strong ref={counter1.ref}>{counter1.displayValue}</strong>
+              <strong ref={counter1Ref}>{counter1Value}</strong>
               <span>Padel Found In</span>
             </article>
             <article>
-              <strong ref={counter2.ref}>{counter2.displayValue}</strong>
+              <strong ref={counter2Ref}>{counter2Value}</strong>
               <span>Matches Host</span>
             </article>
             <article>
-              <strong ref={counter3.ref}>{counter3.displayValue}</strong>
+              <strong ref={counter3Ref}>{counter3Value}</strong>
               <span>Active Members</span>
             </article>
           </div>

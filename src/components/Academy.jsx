@@ -15,9 +15,9 @@ export default function Academy() {
   const [isReady, setIsReady] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  const counter1 = useCountUp(150, '+');
-  const counter2 = useCountUp(30, '+');
-  const counter3 = useCountUp(85, '+');
+  const { ref: counter1Ref, displayValue: counter1Value } = useCountUp(150, '+');
+  const { ref: counter2Ref, displayValue: counter2Value } = useCountUp(30, '+');
+  const { ref: counter3Ref, displayValue: counter3Value } = useCountUp(85, '+');
 
   const handleVideoAction = useCallback((action) => {
     if (!playerReadyRef.current || !playerRef.current) return;
@@ -151,17 +151,17 @@ export default function Academy() {
 
         <div className="academy-stats">
           <article>
-            <strong ref={counter1.ref}>{counter1.displayValue}</strong>
+            <strong ref={counter1Ref}>{counter1Value}</strong>
             <h3>Students Trained to Competitive Level</h3>
             <p>Our academy has successfully trained over 150 players who now compete in regional and national tournaments.</p>
           </article>
           <article>
-            <strong ref={counter2.ref}>{counter2.displayValue}</strong>
+            <strong ref={counter2Ref}>{counter2Value}</strong>
             <h3>National Certifications &amp; Recognitions</h3>
             <p>Adelux Academy is officially recognized by 3 national-level padel and sports development organizations.</p>
           </article>
           <article>
-            <strong ref={counter3.ref}>{counter3.displayValue}</strong>
+            <strong ref={counter3Ref}>{counter3Value}</strong>
             <h3>Championship Won by Our Coaches</h3>
             <p>Our coaching team has collectively earned 12 prestigious padel championship titles a testament to their expertise.</p>
           </article>

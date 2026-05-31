@@ -45,11 +45,11 @@ export default function Footer() {
             <h3>Adelux Padel Club &amp; Academy</h3>
             <p>Experience the future of padel through modern courts, expert coaching, and an inclusive community.</p>
             <div className="footer-socials">
-              <a href="#contact">f</a>
-              <a href="#contact">x</a>
-              <a href="#contact">yt</a>
-              <a href="#contact">tt</a>
-              <a href="#contact">in</a>
+              <a href="#/contact">f</a>
+              <a href="#/contact">x</a>
+              <a href="#/contact">yt</a>
+              <a href="#/contact">tt</a>
+              <a href="#/contact">in</a>
             </div>
           </section>
 
@@ -57,12 +57,12 @@ export default function Footer() {
             <h3>Quick Links</h3>
             <ul>
               <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
+              <li><a href="#/about">About Us</a></li>
               <li><a href="#academy">School &amp; Academy</a></li>
               <li><a href="#booking">Book a Court</a></li>
               <li><a href="#events">Tournament</a></li>
               <li><a href="#contact">Our Blog</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#/contact">Contact Us</a></li>
             </ul>
           </section>
 
