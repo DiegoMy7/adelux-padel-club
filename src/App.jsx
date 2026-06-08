@@ -13,12 +13,18 @@ import Testimonials from './components/Testimonials';
 import Membership from './components/Membership';
 import Blog from './components/Blog';
 import ContactUs from './components/ContactUs';
+import BookingPage from './components/BookingPage';
+import ServicePage from './components/ServicePage';
+import CommunityPage from './components/CommunityPage';
+import NotFoundPage from './components/NotFoundPage';
 import Footer from './components/Footer';
 import './App.css';
 
 function getRouteFromHash() {
   const route = window.location.hash.replace('#/', '');
-  if (route === 'about' || route === 'contact') return route;
+  if (!route) return 'home';
+  if (['about', 'contact', 'booking', 'service', 'community', '404'].includes(route)) return route;
+  if (window.location.hash.startsWith('#/')) return '404';
   return 'home';
 }
 
@@ -79,6 +85,50 @@ export default function App() {
         </div>
         <ContactUs />
         <Footer />
+      </main>
+    );
+  }
+
+  if (route === 'booking') {
+    return (
+      <main className="page-shell">
+        <div className="subpage-nav-wrap">
+          <Navbar />
+        </div>
+        <BookingPage />
+        <Footer />
+      </main>
+    );
+  }
+
+  if (route === 'service') {
+    return (
+      <main className="page-shell">
+        <div className="subpage-nav-wrap">
+          <Navbar />
+        </div>
+        <ServicePage />
+        <Footer />
+      </main>
+    );
+  }
+
+  if (route === 'community') {
+    return (
+      <main className="page-shell">
+        <div className="subpage-nav-wrap">
+          <Navbar />
+        </div>
+        <CommunityPage />
+        <Footer />
+      </main>
+    );
+  }
+
+  if (route === '404') {
+    return (
+      <main className="page-shell not-found-shell">
+        <NotFoundPage />
       </main>
     );
   }

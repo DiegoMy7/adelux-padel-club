@@ -143,18 +143,87 @@ button {
 .nav-menu {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 28px;
   font-family: "Montserrat", sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
 }
 
-.nav-menu a {
+.nav-menu a,
+.nav-dropdown-trigger {
   color: rgba(255, 255, 255, 0.94);
 }
 
-.nav-menu a.active {
+.nav-menu a.active,
+.nav-dropdown-trigger.active {
   color: var(--accent);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.nav-chevron {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-top: -5px;
+  border-right: 3px solid currentColor;
+  border-bottom: 3px solid currentColor;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 28px);
+  left: 50%;
+  z-index: 30;
+  display: grid;
+  min-width: 200px;
+  padding: 12px 0 14px;
+  border-radius: 0 0 18px 18px;
+  background: #fff;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(-50%, 10px, 0);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 15px 24px;
+  color: #111;
+  font-size: 0.98rem;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-dropdown-menu a:hover {
+  background: #f5f5ef;
+  color: #5a5a5a;
 }
 
 .join-button,
@@ -2077,6 +2146,28 @@ button {
   background-image: url("/adelux-assets/close-up-of-female-athlete-with-paddle-tennis-rack-RQ2CD4P.jpg");
 }
 
+.template-banner-service {
+  background-image: url("/adelux-assets/tailored-indoor-padel-coaching-for-skill-enhanceme-JV5Z29N.jpg");
+}
+
+.template-banner-booking {
+  background-image: url("/adelux-assets/monitor-teaching-padel-class-RQUY73T.jpg");
+}
+
+.template-banner-community {
+  background-image: url("/adelux-assets/monitor-teaching-padel-class-QS4RXUJ.jpg");
+}
+
+.template-banner-404 {
+  min-height: calc(100svh - 50px);
+  padding: 120px 20px;
+  background-image: url("/adelux-assets/paddle-tennis-racket-and-ball-3SXRR2Z.jpg");
+}
+
+.template-banner-404::before {
+  background: rgba(0, 0, 0, 0.24);
+}
+
 .template-banner-content {
   position: relative;
   z-index: 1;
@@ -3045,6 +3136,390 @@ button {
   justify-self: start;
 }
 
+.template-heading-block.centered {
+  justify-items: center;
+  text-align: center;
+}
+
+.template-heading-block.centered h2 {
+  max-width: 15ch;
+}
+
+.template-service-section {
+  padding: 120px 0 70px;
+}
+
+.template-service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.template-service-card {
+  position: relative;
+  min-height: 410px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #050505;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.template-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+}
+
+.template-service-img {
+  width: 100%;
+  height: 100%;
+  min-height: 410px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.template-service-card:hover .template-service-img {
+  transform: scale(1.08);
+}
+
+.template-service-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  display: grid;
+  width: 66px;
+  height: 66px;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--accent);
+}
+
+.template-service-icon img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.template-service-overlay {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 16px 16px;
+  border-radius: 20px;
+  color: #fff;
+  background: rgba(65, 119, 135, 0.52);
+  backdrop-filter: blur(14px);
+}
+
+.template-service-overlay h3 {
+  max-width: 11ch;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 800;
+  line-height: 1.22;
+}
+
+.template-service-overlay a,
+.template-pricing-card .join-icon {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #050505;
+  color: var(--accent);
+}
+
+.template-service-overlay a {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.35rem;
+}
+
+.template-pricing-section {
+  padding: 18px 0 78px;
+}
+
+.template-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 50px;
+}
+
+.template-pricing-card {
+  display: grid;
+  align-content: start;
+  gap: 26px;
+  min-height: 560px;
+  padding: 34px;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.template-pricing-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.template-pricing-card h3,
+.template-price strong,
+.template-process-card h3,
+.template-booking-form-card h3,
+.template-booking-detail h3,
+.template-training-cta h2,
+.template-404-page h3 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+}
+
+.template-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.template-price span,
+.template-price small {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+}
+
+.template-price strong {
+  font-size: 3.35rem;
+  line-height: 0.9;
+}
+
+.template-pricing-card p,
+.template-booking-form-card p,
+.template-booking-detail p,
+.template-training-cta p,
+.template-404-page p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.template-pricing-card ul,
+.template-check-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 24px 0;
+  border-top: 1px solid #e7e7df;
+  border-bottom: 1px solid #e7e7df;
+  list-style: none;
+}
+
+.template-pricing-card li,
+.template-check-list li {
+  position: relative;
+  padding-left: 34px;
+  color: #222;
+  font-weight: 700;
+}
+
+.template-pricing-card li::before,
+.template-check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.template-pricing-card li::after,
+.template-check-list li::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 7px;
+  width: 5px;
+  height: 9px;
+  border: solid #050505;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.template-booking-process {
+  padding: 120px 0 90px;
+}
+
+.template-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 50px;
+}
+
+.template-process-card {
+  display: grid;
+  align-content: start;
+  gap: 58px;
+  min-height: 270px;
+  padding: 34px;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.template-process-card span {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--accent);
+  color: #111;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+}
+
+.template-process-card p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.template-booking-form-section {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 42px;
+  align-items: start;
+  padding: 0 0 78px;
+}
+
+.template-booking-form-card,
+.template-booking-detail {
+  border-radius: 24px;
+}
+
+.template-booking-form-card {
+  display: grid;
+  gap: 24px;
+  padding: 42px;
+  background: #050505;
+  color: #fff;
+}
+
+.template-booking-form-card p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.template-booking-form-card .template-contact-form label {
+  color: var(--accent);
+}
+
+.template-booking-detail {
+  display: grid;
+  gap: 34px;
+  padding: 42px;
+  background: #fff;
+}
+
+.template-booking-detail article {
+  display: grid;
+  gap: 16px;
+}
+
+.template-booking-detail .template-check-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 0;
+}
+
+.template-training-cta {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 34px;
+  align-items: end;
+  padding: 42px 42px 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--accent);
+}
+
+.template-training-cta div {
+  display: grid;
+  gap: 24px;
+  padding-bottom: 42px;
+}
+
+.template-training-cta h2 {
+  max-width: 10ch;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.template-training-cta p {
+  max-width: 54ch;
+  color: #1d1d1d;
+}
+
+.template-training-cta .cta-pill {
+  width: fit-content;
+}
+
+.template-training-cta img {
+  align-self: end;
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+}
+
+.community-page .events-section {
+  padding-top: 120px;
+}
+
+.community-page .academy-shell {
+  margin-top: 18px;
+}
+
+.not-found-shell {
+  min-height: 100svh;
+}
+
+.template-404-page .template-banner-content {
+  max-width: 760px;
+}
+
+.template-404-page h1 {
+  color: var(--accent);
+  font-size: clamp(6.5rem, 15vw, 13rem);
+  line-height: 0.75;
+}
+
+.template-404-page h3 {
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.template-404-page p {
+  max-width: 52ch;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.template-404-page .cta-pill {
+  margin-top: 18px;
+  min-height: 76px;
+  padding-left: 30px;
+  font-size: 1.1rem;
+}
+
 @keyframes zoomFloat {
   from {
     transform: scale(1.02);
@@ -3140,13 +3615,21 @@ button {
   .template-detail-about,
   .template-choose-page,
   .template-membership-grid,
-  .template-team-section {
+  .template-team-section,
+  .template-booking-form-section,
+  .template-training-cta {
     grid-template-columns: 1fr;
     gap: 42px;
   }
 
-  .template-mission-grid {
+  .template-mission-grid,
+  .template-service-grid,
+  .template-process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .template-pricing-grid {
+    grid-template-columns: 1fr;
   }
 
   .template-team-copy {
@@ -3210,11 +3693,45 @@ button {
     flex-direction: column;
     align-items: flex-start;
     gap: 14px;
+    width: 100%;
     padding-top: 10px;
   }
 
   .nav-menu.open {
     display: flex;
+  }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .nav-dropdown-trigger {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    display: none;
+    width: min(280px, calc(100vw - 64px));
+    min-width: 0;
+    margin-top: 14px;
+    border-radius: 0 0 18px 18px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .nav-dropdown.is-open .nav-dropdown-menu {
+    display: grid;
+    transform: none;
+  }
+
+  .nav-dropdown-menu a {
+    color: #111;
+    font-size: 1rem;
+    white-space: normal;
   }
 
   .menu-toggle {
@@ -3392,7 +3909,10 @@ button {
   .template-form-row,
   .template-about-stats,
   .template-choose-cards,
-  .template-team-grid {
+  .template-team-grid,
+  .template-service-grid,
+  .template-process-grid,
+  .template-booking-detail .template-check-list {
     grid-template-columns: 1fr;
   }
 
@@ -3402,6 +3922,34 @@ button {
 
   .template-contact-card {
     padding: 30px 24px;
+  }
+
+  .template-service-section,
+  .template-booking-process,
+  .community-page .events-section {
+    padding-top: 58px;
+  }
+
+  .template-service-card,
+  .template-service-img {
+    min-height: 340px;
+  }
+
+  .template-pricing-card,
+  .template-booking-form-card,
+  .template-booking-detail,
+  .template-training-cta {
+    padding: 30px 24px;
+  }
+
+  .template-process-card {
+    min-height: 220px;
+    gap: 34px;
+    padding: 30px 24px;
+  }
+
+  .template-training-cta img {
+    max-height: 360px;
   }
 
   .template-detail-visual,

@@ -6,7 +6,7 @@ export default function Membership() {
   const sectionRef = useRevealOnScroll();
 
   return (
-    <section className="membership-section light-section" ref={sectionRef}>
+    <section className="membership-section light-section" id="membership" ref={sectionRef}>
       <div className="content-wrap membership-grid">
         <article className="membership-card lime-card reveal" data-reveal="right">
           <h2>Become an Adelux Member Today</h2>

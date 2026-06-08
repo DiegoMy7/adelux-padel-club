@@ -6,7 +6,7 @@ export default function Blog() {
   const sectionRef = useRevealOnScroll();
 
   return (
-    <section className="blog-section light-section" ref={sectionRef}>
+    <section className="blog-section light-section" id="blog" ref={sectionRef}>
       <div className="content-wrap">
         <div className="section-head reveal" data-reveal="right">
           <div>
